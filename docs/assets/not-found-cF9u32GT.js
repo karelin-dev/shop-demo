@@ -1,0 +1,1 @@
+import{w as o}from"./jsx-runtime-CSH9v_h2.js";import{N as t}from"./NotFound-CgCPZxPv.js";import{s as r}from"./seo-vqRxICLB.js";import"./ProductCard-weIDfCpW.js";import"./img-BOTWqCia.js";const p=()=>r({title:"Страница не найдена",description:"Такой страницы в магазине нет.",noindex:!0}),a=o(t);export{a as default,p as meta};

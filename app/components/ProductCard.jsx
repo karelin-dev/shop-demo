@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router'
 import { rub } from '../lib/format.js'
 import { productImg } from '../lib/img.js'
@@ -37,12 +38,14 @@ export function PriceFrom({ product: p }) {
 export default function ProductCard({ product: p, sizes = SIZES, priority = false }) {
   const { favs, toggleFav, add } = useShop()
   const fav = favs.includes(p.slug)
-  const second = p.photos[1] && p.variants?.type !== 'color' ? p.photos[1] : null
+  // второе фото показываем при наведении и грузим только после первого наведения
+  const [peek, setPeek] = useState(false)
+  const second = peek && p.photos[1] && p.variants?.type !== 'color' ? p.photos[1] : null
   const url = `/product/${p.slug}`
   const colorOptions = p.variants?.type === 'color' ? p.variants.options : null
 
   return (
-    <article className={s.card}>
+    <article className={s.card} onPointerEnter={(e) => e.pointerType === 'mouse' && setPeek(true)}>
       <div className={s.photo}>
         <img
           {...productImg(p.photos[0].src, sizes)}

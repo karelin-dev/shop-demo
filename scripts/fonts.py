@@ -39,7 +39,7 @@ SAMPLE = ('Керамика, лён и лампы от небольших мас
 def make_subset(src, dst, unicodes):
     opts = subset.Options()
     opts.flavor = 'woff2'
-    opts.layout_features = ['*']
+    opts.layout_features = ['kern', 'mark', 'mkmk']  # кернинг и диакритика, остальные функции шрифта сайту не нужны
     opts.notdef_outline = True
     font = TTFont(src)
     sub = subset.Subsetter(opts)

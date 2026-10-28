@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { fullImg, productImg, thumbImg } from '../lib/img.js'
 import useDialog from '../lib/useDialog.js'
+import { useHydrated } from '../shop.jsx'
 import Icon from './Icon.jsx'
 import s from './Gallery.module.css'
 
@@ -42,6 +43,8 @@ export default function Gallery({ photos, index, onIndex, label }) {
   const target = useRef(null) // куда едет прокрутка, запущенная кнопкой: промежуточные кадры не считаем выбором
   const [zoom, setZoom] = useState(false)
   const close = useCallback(() => setZoom(false), [])
+  // остальные фото грузим, когда страница ожила: так они не отнимают канал у первого (LCP)
+  const hydrated = useHydrated()
 
   // при смене варианта (цвета) прокручиваем к его фото
   useEffect(() => {
@@ -70,15 +73,17 @@ export default function Gallery({ photos, index, onIndex, label }) {
           {photos.map((ph, i) => (
             <li key={ph.src}>
               <button type="button" className={s.zoom} onClick={() => setZoom(true)} aria-label={`Открыть фото ${i + 1} на весь экран`}>
-                <img
-                  {...productImg(ph.src, '(max-width: 1099px) 100vw, 56vw')}
-                  alt={ph.alt}
-                  width="1200"
-                  height="1200"
-                  loading={i === 0 ? 'eager' : 'lazy'}
-                  fetchPriority={i === 0 ? 'high' : undefined}
-                  decoding="async"
-                />
+                {(i === 0 || hydrated) && (
+                  <img
+                    {...productImg(ph.src, '(max-width: 767px) calc(100vw - 16px), (max-width: 1099px) calc(100vw - 48px), 56vw')}
+                    alt={ph.alt}
+                    width="1200"
+                    height="1200"
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={i === 0 ? 'high' : undefined}
+                    decoding="async"
+                  />
+                )}
               </button>
             </li>
           ))}
