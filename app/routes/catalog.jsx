@@ -21,8 +21,8 @@ export const meta = ({ params }) => {
   const c = categoryBySlug[params.category]
   if (params.category && !c) return seo({ title: 'Страница не найдена', description: 'Такой категории нет.', noindex: true })
   const path = c ? `catalog/${c.slug}` : 'catalog'
-  const crumbs = [{ name: 'Главная', url: SITE }, { name: 'Каталог', url: `${SITE}catalog` }]
-  if (c) crumbs.push({ name: c.name, url: `${SITE}${path}` })
+  const crumbs = [{ name: 'Главная', url: SITE }, { name: 'Каталог', url: `${SITE}catalog/` }]
+  if (c) crumbs.push({ name: c.name, url: `${SITE}${path}/` })
   return seo({
     title: c ? c.name : 'Каталог',
     description: c

@@ -6,7 +6,9 @@ const OG = `${SITE}og.jpg`
 // Заголовок, описание, каноническая ссылка и превью для соцсетей и мессенджеров
 export function seo({ title, description, path = '', image = OG, noindex = false, jsonLd = null }) {
   const full = title ? `${title} · ${BRAND}` : `${BRAND}: вещи для дома`
-  const url = SITE + path.replace(/^\//, '')
+  // Pages отдаёт страницы по адресу со слешем на конце, его и считаем каноническим
+  const clean = path.replace(/^\/|\/$/g, '')
+  const url = SITE + (clean ? `${clean}/` : '')
   const tags = [
     { title: full },
     { name: 'description', content: description },

@@ -17,6 +17,6 @@ writeFileSync('docs/.nojekyll', '')
 
 const paths = ['', 'catalog', ...categories.map((c) => `catalog/${c.slug}`), ...products.map((p) => `product/${p.slug}`)]
 const today = new Date().toISOString().slice(0, 10)
-const urls = paths.map((p) => `  <url><loc>${SITE}${p}</loc><lastmod>${today}</lastmod></url>`).join('\n')
+const urls = paths.map((p) => `  <url><loc>${SITE}${p ? `${p}/` : ''}</loc><lastmod>${today}</lastmod></url>`).join('\n')
 writeFileSync('docs/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`)
 console.log(`docs: готово, в sitemap ${paths.length} страниц`)

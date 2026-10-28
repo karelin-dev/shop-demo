@@ -17,7 +17,7 @@ export const meta = ({ params }) => {
   const p = bySlug[params.slug]
   if (!p) return seo({ title: 'Товар не найден', description: 'Такого товара нет.', noindex: true })
   const c = categoryBySlug[p.category]
-  const url = `${SITE}product/${p.slug}`
+  const url = `${SITE}product/${p.slug}/`
   const image = `${SITE}img/p/${p.photos[0].src}-1200.webp`
   return seo({
     title: p.name,
@@ -45,7 +45,7 @@ export const meta = ({ params }) => {
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE },
-            { '@type': 'ListItem', position: 2, name: c.name, item: `${SITE}catalog/${c.slug}` },
+            { '@type': 'ListItem', position: 2, name: c.name, item: `${SITE}catalog/${c.slug}/` },
             { '@type': 'ListItem', position: 3, name: p.name, item: url },
           ],
         },
