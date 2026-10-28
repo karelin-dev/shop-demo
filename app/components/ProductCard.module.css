@@ -1,0 +1,54 @@
+.card { position: relative; display: flex; flex-direction: column; min-width: 0; }
+
+.photo { position: relative; display: block; aspect-ratio: 1; border-radius: var(--radius); overflow: hidden; background: var(--sand); }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease, opacity .35s ease; }
+.second { opacity: 0; }
+@media (hover: hover) {
+  .card:hover .photo img:first-child { transform: scale(1.03); }
+  .card:hover .second { opacity: 1; }
+}
+.out {
+  position: absolute; left: 14px; bottom: 14px; padding: 6px 14px; border-radius: 999px;
+  background: var(--milk); font-size: 13px; font-weight: 500;
+}
+
+.badge { position: absolute; top: 14px; left: 14px; width: 64px; height: 64px; pointer-events: none; }
+.sale { background: var(--clay); color: #fff; }
+.hit { background: var(--sage); }
+
+.fav {
+  position: absolute; z-index: 2; top: 14px; right: 14px; display: grid; place-items: center;
+  width: 44px; height: 44px; border-radius: 50%; background: #fff; transition: color .2s, transform .15s;
+}
+.fav:hover { color: var(--clay-dark); }
+.fav:active { transform: scale(0.92); }
+.favOn { color: var(--clay); }
+
+.body { display: flex; flex-direction: column; flex: 1; padding-top: 14px; }
+.name { font: 500 17px/1.35 var(--text); }
+.name a:hover { color: var(--clay-dark); }
+.name a::after { content: ''; position: absolute; inset: 0 0 64px; }
+.meta { margin-top: 2px; font-size: 14px; color: var(--muted); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 12px; }
+.swatches { display: flex; gap: 6px; margin-left: auto; }
+.swatches i { width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1); }
+.add {
+  position: relative; z-index: 1; display: grid; place-items: center; flex: none;
+  width: 48px; height: 48px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--clay); color: var(--clay-dark);
+  transition: background-color .2s, color .2s;
+}
+.add:hover:not(:disabled) { background: var(--clay); color: #fff; }
+.add:disabled { box-shadow: inset 0 0 0 1.5px var(--line-2); color: #9A9FA5; }
+
+@media (max-width: 767px) {
+  .badge { top: 8px; left: 8px; width: 46px; height: 46px; font-size: 10px; }
+  .fav { top: 8px; right: 8px; width: 36px; height: 36px; }
+  .fav svg { width: 18px; height: 18px; }
+  .name { font-size: 14px; }
+  .meta { font-size: 12px; }
+  .row :global(.price) { font-size: 15px; }
+  .row :global(.old-price) { display: block; margin: 2px 0 0; font-size: 12px; }
+  .add { width: 38px; height: 38px; }
+  .swatches { display: none; }
+  .out { left: 8px; bottom: 8px; font-size: 12px; padding: 4px 10px; }
+}

@@ -1,0 +1,1 @@
+const s="_crumbs_1s8uy_1",t="_title_1s8uy_4",_="_list_1s8uy_7",y="_n_1s8uy_12",c="_status_1s8uy_13",n="_body_1s8uy_14",u="_btns_1s8uy_15",o="_empty_1s8uy_17",e="_emptyIc_1s8uy_18",b={crumbs:s,title:t,list:_,n:y,status:c,body:n,btns:u,empty:o,emptyIc:e};export{b as s};

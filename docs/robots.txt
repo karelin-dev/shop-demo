@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://karelin-dev.github.io/shop-demo/sitemap.xml

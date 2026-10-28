@@ -1,0 +1,7 @@
+.items { display: grid; gap: 4px; }
+.items li { display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; align-items: center; padding: 8px 0; font-size: 14px; }
+.pic { position: relative; }
+.pic b { position: absolute; top: -6px; right: -6px; display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 11px; background: var(--clay); color: #fff; font-size: 11px; font-weight: 600; }
+.name { display: flex; flex-direction: column; min-width: 0; }
+.name span { font-weight: 500; }
+.name small { color: var(--muted); }

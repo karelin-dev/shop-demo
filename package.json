@@ -1,0 +1,29 @@
+{
+  "name": "shop-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Демо интернет-магазина товаров для дома «Полдень» на React: каталог с фильтрами, карточка товара, корзина и оформление заказа",
+  "author": "Ivan Karelin",
+  "license": "MIT",
+  "scripts": {
+    "dev": "react-router dev --port 3007",
+    "build": "react-router build && node scripts/to-docs.mjs",
+    "preview": "node scripts/serve-docs.mjs",
+    "fonts": "node scripts/copy-fonts.mjs",
+    "images": "python scripts/images.py ../design/shop/photos"
+  },
+  "dependencies": {
+    "@react-router/node": "^7.18.5",
+    "isbot": "^5.2.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "^7.18.5"
+  },
+  "devDependencies": {
+    "@fontsource-variable/rubik": "^5.3.0",
+    "@fontsource-variable/unbounded": "^5.3.0",
+    "@react-router/dev": "^7.18.5",
+    "vite": "^7.3.7"
+  }
+}

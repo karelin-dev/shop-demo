@@ -1,0 +1,12 @@
+.rows { display: grid; gap: 10px; font-size: 15px; }
+.rows div { display: flex; justify-content: space-between; gap: 12px; }
+.rows dt { color: var(--muted); }
+.minus { color: var(--green); }
+.promo { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.promo input { min-height: 44px; border-radius: 999px; font-size: 15px; text-transform: uppercase; }
+.promo input::placeholder { text-transform: none; }
+.promo p { grid-column: 1 / -1; font-size: 13px; padding-left: 4px; }
+.promoOn { display: flex; align-items: center; gap: 4px; }
+.promoOn :global(.chip) { font-weight: 500; gap: 8px; }
+.promoX { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; }
+.promoX:hover { background: var(--linen); }
